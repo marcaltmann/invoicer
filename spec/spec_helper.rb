@@ -16,6 +16,9 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+require 'pathname'
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -90,3 +93,7 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+# Add app directory to load path
+path = Pathname(__dir__).expand_path.parent.join('app')
+$LOAD_PATH.unshift(path.to_s)
